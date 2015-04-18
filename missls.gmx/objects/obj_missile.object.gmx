@@ -41,7 +41,7 @@
             <kind>1</kind>
             <string>/// Initialize
 
-trail = instance_create(phy_position_x, phy_position_y, obj_trail);
+trail = noone;
 </string>
           </argument>
         </arguments>
@@ -80,12 +80,13 @@ trail = instance_create(phy_position_x, phy_position_y, obj_trail);
             <kind>1</kind>
             <string>/// Remember position in trail
 
-var point;
-point[1] = phy_position_y;
-point[0] = phy_position_x;
-
-with (trail) {
-    ds_list_add(points, point);
+if (instance_exists(trail)) {
+    var point;
+    point[1] = phy_position_y;
+    point[0] = phy_position_x;
+    with (trail) {
+        ds_list_add(points, point);
+    }
 }
 </string>
           </argument>
@@ -143,8 +144,8 @@ with (trail) {
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectLinearDamping>0</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>0</PhysicsObjectAngularDamping>
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>

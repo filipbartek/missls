@@ -28,6 +28,8 @@
             <string>/// Initialize
 
 points = ds_list_create();
+
+col = c_white;
 </string>
           </argument>
         </arguments>
@@ -77,7 +79,7 @@ ds_list_destroy(points);
             <kind>1</kind>
             <string>/// Draw trail
 
-draw_set_colour(c_white);
+draw_set_colour(col);
 draw_primitive_begin(pr_linestrip);
 for (var i = 0; i &lt; ds_list_size(points); i++) {
     var point = ds_list_find_value(points, i);

@@ -43,6 +43,8 @@
 rotation_speed = 60 / 1000000;
 fire_power = 10 / 1000000;
 
+col = c_white;
+
 missile = noone;
 charge_start = 0;
 missiles = ds_queue_create();

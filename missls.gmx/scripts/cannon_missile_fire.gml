@@ -10,6 +10,9 @@ with (missile) {
     phy_active = true;
     phy_rotation = other.phy_rotation;
     physics_apply_impulse(x, y, impulse_x, impulse_y);
+    
+    trail = instance_create(phy_position_x, phy_position_y, obj_trail);
+    trail.col = other.col;
 }
 
 missile = noone;
