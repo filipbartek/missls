@@ -33,7 +33,39 @@ global.gravity_planetary = 10000;
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="27">
+    <event eventtype="9" enumb="123">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Save a screenshot
+
+for (var i = 0; i &lt; 64; i++) {
+    var filename = "missls-" + string(i) + ".png";
+    if (!file_exists(filename)) {
+        screen_save(filename);
+        show_debug_message("Screenshot saved to " + filename);
+        break;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
       <action>
         <libid>1</libid>
         <id>332</id>
