@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_controller_keys</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_controller</parentName>
@@ -42,6 +42,7 @@
             <string>/// Initialize
 
 col = c_blue;
+start = "up";
 </string>
           </argument>
         </arguments>
