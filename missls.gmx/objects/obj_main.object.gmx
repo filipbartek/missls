@@ -25,30 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Initialize global variables
 
 global.gravity_planetary = 1;
 global.explosion_r = 64;
+global.trails = noone;
 
 draw_set_circle_precision(64);
 </string>
@@ -128,7 +109,9 @@ with (planet) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_debug_overlay(true);
+            <string>/// Show debug overlay?
+
+//show_debug_overlay(true);
 </string>
           </argument>
         </arguments>

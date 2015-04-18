@@ -34,6 +34,7 @@
     <script>scripts\controller_act.gml</script>
     <script>scripts\assert.gml</script>
     <script>scripts\planet_create_fixture.gml</script>
+    <script>scripts\background_surface_initialize.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_main</object>
@@ -57,6 +58,8 @@
         <object>objects\obj_missile</object>
       </objects>
     </objects>
+    <object>objects\obj_background</object>
+    <object>objects\obj_physics_debug</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_main</room>

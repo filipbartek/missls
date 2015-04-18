@@ -51,6 +51,8 @@ charge_start = 0;
 missiles = ds_queue_create();
 
 base = noone;
+
+length = 32;
 </string>
           </argument>
         </arguments>
@@ -174,11 +176,19 @@ with (missile) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw charge progress
+            <string>/// Draw active missile
 
-if (instance_exists(missile)) {
-    draw_set_colour(c_gray);
-    draw_text(phy_position_x, phy_position_y, cannon_get_charge_power());
+while (!ds_queue_empty(missiles)) {
+    var missile_det = ds_queue_head(missiles);
+    if (instance_exists(missile_det)) {
+        draw_set_colour(col);
+        with (missile_det) {
+            draw_circle(phy_position_x, phy_position_y, global.explosion_r, true);
+        }
+        break;
+    } else {
+        ds_queue_dequeue(missiles);
+    }
 }
 </string>
           </argument>
@@ -200,20 +210,15 @@ if (instance_exists(missile)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw active missile
+            <string>/// Draw glow
 
-while (!ds_queue_empty(missiles)) {
-    var missile_det = ds_queue_head(missiles);
-    if (instance_exists(missile_det)) {
-        draw_set_colour(col);
-        with (missile_det) {
-            draw_circle(phy_position_x, phy_position_y, global.explosion_r, true);
-        }
-        break;
-    } else {
-        ds_queue_dequeue(missiles);
-    }
-}
+// http://gmc.yoyogames.com/index.php?showtopic=567674
+
+draw_set_alpha(0.5);
+draw_set_blend_mode(bm_add);
+draw_circle_colour(phy_position_x, phy_position_y, 32, c_white, c_black, 0);
+draw_set_blend_mode(bm_normal);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

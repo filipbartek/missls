@@ -57,6 +57,60 @@ r = 0;
 var timer_diff = get_timer() - timer_start;
 
 r = timer_diff * 64 / 1000000;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Clear a part of trails
+
+if (instance_exists(global.trails)
+        and surface_exists(global.trails.surf)) {
+    surface_set_target(global.trails.surf);
+    draw_set_colour(c_black);
+    draw_set_alpha(1 - delta_time / 1000000);
+    draw_set_blend_mode_ext(bm_zero, bm_src_alpha);
+    draw_circle(x, y, r, false);
+    draw_set_alpha(1);
+    draw_set_blend_mode(bm_normal);
+    surface_reset_target();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy explosion if too large
 
 if (r &gt; global.explosion_r) {
     instance_destroy();
