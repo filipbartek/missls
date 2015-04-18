@@ -34,6 +34,6 @@ with (missile) {
     trail.col = other.col;
 }
 
-physics_apply_impulse(phy_position_x, phy_position_y, -impulse_x * 10, -impulse_y * 10);
+physics_apply_impulse(phy_position_x, phy_position_y, -impulse_x * 2, -impulse_y * 2);
 
 missile = noone;
