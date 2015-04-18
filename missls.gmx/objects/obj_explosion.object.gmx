@@ -123,6 +123,74 @@ while (true) {
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy bases
+
+with (obj_base) {
+    var dist = point_distance(other.x, other.y, phy_position_x, phy_position_y);
+    if (dist &lt;= other.r) {
+        instance_destroy();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Push cannons
+
+with (obj_cannon) {
+    var dist = point_distance(other.x, other.y, phy_position_x, phy_position_y);
+    if (dist &lt;= other.r) {
+        //if (static) {
+        //    physics_remove_fixture(self, fix);
+        //    fix = physics_fixture_bind_ext(global.fixture_cannon_dynamic, self, 20, 0);
+        //    static = false;
+        //}
+        assert(other.r &gt; 0);
+        var dist_ratio = dist / other.r; // 0 in center, 1 at rim
+        assert(dist_ratio &gt; 0);
+        var push_power = 1000 * ((1 / dist_ratio) - 1);
+        var dir = point_direction(other.x, other.y, phy_position_x, phy_position_y);
+        var force_x = lengthdir_x(push_power, dir);
+        var force_y = lengthdir_y(push_power, dir);
+        physics_apply_force(phy_position_x, phy_position_y, force_x, force_y);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -143,7 +211,7 @@ while (true) {
             <kind>1</kind>
             <string>/// Draw explosion
 
-draw_set_colour(c_gray);
+draw_set_colour(c_white);
 draw_circle(x, y, r, false);
 </string>
           </argument>

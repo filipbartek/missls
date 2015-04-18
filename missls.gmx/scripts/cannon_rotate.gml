@@ -5,4 +5,4 @@
 
 var rotation_dir = argument0;
 
-phy_rotation += rotation_dir * rotation_speed * delta_time;
+physics_apply_torque(rotation_dir * rotation_speed);
