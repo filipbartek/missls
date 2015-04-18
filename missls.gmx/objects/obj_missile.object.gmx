@@ -41,32 +41,7 @@
             <kind>1</kind>
             <string>/// Initialize
 
-positions = ds_list_create();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Clean up
-
-ds_list_destroy(positions);
+trail = instance_create(phy_position_x, phy_position_y, obj_trail);
 </string>
           </argument>
         </arguments>
@@ -105,10 +80,13 @@ ds_list_destroy(positions);
             <kind>1</kind>
             <string>/// Remember position in trail
 
-var position;
-position[1] = phy_position_y;
-position[0] = phy_position_x;
-ds_list_add(positions, position);
+var point;
+point[1] = phy_position_y;
+point[0] = phy_position_x;
+
+with (trail) {
+    ds_list_add(points, point);
+}
 </string>
           </argument>
         </arguments>
@@ -154,53 +132,6 @@ ds_list_add(positions, position);
           <argument>
             <kind>1</kind>
             <string>Collision handler</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>500</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring>draw_self();</codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Draw trail
-
-draw_set_colour(c_white);
-draw_primitive_begin(pr_linestrip);
-for (var i = 0; i &lt; ds_list_size(positions); i++) {
-    var position = ds_list_find_value(positions, i);
-    var position_x = position[0];
-    var position_y = position[1];
-    draw_vertex(position_x, position_y);
-}
-draw_primitive_end();
-</string>
           </argument>
         </arguments>
       </action>
