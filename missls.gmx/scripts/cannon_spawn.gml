@@ -2,7 +2,6 @@
 
 // Call from obj_controller
 
-show_debug_message("Spawning a cannon");
 // Spawn a cannon with a base
 var angle = random(360);
 var dist = global.planet.r + 20;
@@ -18,5 +17,5 @@ cannon.col = col;
 cannon.image_blend = col;
 //cannon.base = base;
 
-physics_joint_revolute_create(base, cannon, pos_x, pos_y, -90, 90, true,
+physics_joint_revolute_create(base, cannon, pos_x, pos_y, -120, 120, true,
     0, 0, false, false);
