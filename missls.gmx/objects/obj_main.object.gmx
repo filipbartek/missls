@@ -27,7 +27,9 @@
             <kind>1</kind>
             <string>/// Initialize global variables
 
-global.gravity_planetary = 10000;
+global.gravity_planetary = 1;
+
+draw_set_circle_precision(64);
 </string>
           </argument>
         </arguments>
@@ -54,6 +56,58 @@ step_count = 0;
 
 screenshot_delay = 15;
 ss_prefix = "ss-";
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Spawn a planet
+
+var planet = instance_create(room_width / 2, room_height / 2, obj_planet);
+var smalldim = min(room_width, room_height);
+var r_min = smalldim / 8;
+var r_max = smalldim / 4;
+planet.r = random_range(r_min, r_max);
+
+with (planet) {
+    planet_create_fixture();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>show_debug_overlay(true);
 </string>
           </argument>
         </arguments>
@@ -192,6 +246,22 @@ for (var i = 0; i &lt; 64; i++) {
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="113">
+      <action>
+        <libid>1</libid>
+        <id>331</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_restart_game</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="9" enumb="27">

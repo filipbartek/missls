@@ -176,13 +176,14 @@ with (obj_cannon) {
     if (dist &lt;= other.r) {
         assert(other.r &gt; 0);
         var dist_ratio = dist / other.r; // 0 in center, 1 at rim
-        assert(dist_ratio &gt; 0);
-        // TODO: Remove assert; make robust - assert may trigger in normal game.
-        //var push_power = 1000 * ((1 / dist_ratio) - 1);
-        assert (dist_ratio &lt;= 1);
-        var push_power = 10000 * -log2(dist_ratio);
-        if (push_power &gt; max_power) push_power = max_power;
-        //push_power = max_power;
+        if (dist_ratio == 0) {
+            push_power = max_power;
+        } else {
+            //var push_power = 1000 * ((1 / dist_ratio) - 1);
+            assert (dist_ratio &lt;= 1);
+            var push_power = 10000 * -log2(dist_ratio);
+            if (push_power &gt; max_power) push_power = max_power;
+        }
         var dir = point_direction(other.x, other.y, phy_position_x, phy_position_y);
         var force_x = lengthdir_x(push_power, dir);
         var force_y = lengthdir_y(push_power, dir);

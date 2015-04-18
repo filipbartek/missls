@@ -6,14 +6,10 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_planet</sprite>
+    <sprite>sprites\spr_cannon</sprite>
     <sprite>sprites\spr_missile</sprite>
-    <sprites name="cannon">
-      <sprite>sprites\spr_cannon</sprite>
-      <sprite>sprites\spr_cannon_blue</sprite>
-      <sprite>sprites\spr_cannon_orange</sprite>
-    </sprites>
     <sprites name="icon">
+      <sprite>sprites\spr_planet</sprite>
       <sprite>sprites\spr_gravitating</sprite>
       <sprite>sprites\spr_explosion</sprite>
       <sprite>sprites\spr_trail</sprite>
@@ -37,6 +33,7 @@
     <script>scripts\missile_detonate.gml</script>
     <script>scripts\controller_act.gml</script>
     <script>scripts\assert.gml</script>
+    <script>scripts\planet_create_fixture.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_main</object>
@@ -64,12 +61,13 @@
   <rooms name="rooms">
     <room>rooms\room_main</room>
   </rooms>
-  <constants number="5">
+  <constants number="6">
     <constant name="ACTION_LEFT">0</constant>
     <constant name="ACTION_RIGHT">1</constant>
     <constant name="ACTION_CHARGE">2</constant>
     <constant name="ACTION_RELEASE">3</constant>
     <constant name="ACTION_DETONATE">4</constant>
+    <constant name="pixeltometrescale">0.125</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

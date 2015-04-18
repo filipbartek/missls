@@ -41,7 +41,7 @@
             <kind>1</kind>
             <string>/// Initialize
 
-col = c_purple;
+col = c_fuchsia;
 start = "I";
 </string>
           </argument>
