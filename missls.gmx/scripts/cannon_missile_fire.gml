@@ -1,8 +1,6 @@
 ///cannon_missile_fire()
 
-var charge_end = get_timer();
-var charge_diff = charge_end - charge_start;
-var impulse_size = charge_diff * fire_power;
+var impulse_size = fire_power * cannon_get_charge_power();
 var impulse_x = lengthdir_x(impulse_size, -phy_rotation);
 var impulse_y = lengthdir_y(impulse_size, -phy_rotation);
 

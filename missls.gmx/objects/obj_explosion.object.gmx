@@ -169,18 +169,20 @@ with (obj_base) {
             <kind>1</kind>
             <string>/// Push cannons
 
+var max_power = 100000;
+
 with (obj_cannon) {
     var dist = point_distance(other.x, other.y, phy_position_x, phy_position_y);
     if (dist &lt;= other.r) {
-        //if (static) {
-        //    physics_remove_fixture(self, fix);
-        //    fix = physics_fixture_bind_ext(global.fixture_cannon_dynamic, self, 20, 0);
-        //    static = false;
-        //}
         assert(other.r &gt; 0);
         var dist_ratio = dist / other.r; // 0 in center, 1 at rim
         assert(dist_ratio &gt; 0);
-        var push_power = 1000 * ((1 / dist_ratio) - 1);
+        // TODO: Remove assert; make robust - assert may trigger in normal game.
+        //var push_power = 1000 * ((1 / dist_ratio) - 1);
+        assert (dist_ratio &lt;= 1);
+        var push_power = 10000 * -log2(dist_ratio);
+        if (push_power &gt; max_power) push_power = max_power;
+        //push_power = max_power;
         var dir = point_direction(other.x, other.y, phy_position_x, phy_position_y);
         var force_x = lengthdir_x(push_power, dir);
         var force_y = lengthdir_y(push_power, dir);
