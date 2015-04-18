@@ -1,5 +1,7 @@
 ///planet_create_fixture()
 
+assert(is_descendant(obj_planet));
+
 var fix = physics_fixture_create();
 
 // Shape
@@ -7,7 +9,7 @@ physics_fixture_set_circle_shape(fix, r);
 
 // Properties
 physics_fixture_set_density(fix, 0);
-physics_fixture_set_friction(fix, 0.5);
+physics_fixture_set_friction(fix, 0.9);
 physics_fixture_set_linear_damping(fix, 0);
 physics_fixture_set_angular_damping(fix, 0);
 physics_fixture_set_restitution(fix, 0.1);

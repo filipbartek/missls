@@ -14,6 +14,7 @@
       <sprite>sprites\spr_explosion</sprite>
       <sprite>sprites\spr_trail</sprite>
       <sprite>sprites\spr_controller_keys</sprite>
+      <sprite>sprites\spr_stars</sprite>
     </sprites>
     <sprite>sprites\spr_base</sprite>
   </sprites>
@@ -21,20 +22,22 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="cannon">
-      <script>scripts\cannon_rotate.gml</script>
       <script>scripts\cannon_missile_charge.gml</script>
       <script>scripts\cannon_missiles_detonate.gml</script>
       <script>scripts\cannon_missile_fire.gml</script>
-      <script>scripts\cannon_rotate_right.gml</script>
-      <script>scripts\cannon_rotate_left.gml</script>
-      <script>scripts\cannon_spawn.gml</script>
       <script>scripts\cannon_get_charge_power.gml</script>
+      <script>scripts\cannon_get_rotation.gml</script>
     </scripts>
     <script>scripts\missile_detonate.gml</script>
-    <script>scripts\controller_act.gml</script>
     <script>scripts\assert.gml</script>
     <script>scripts\planet_create_fixture.gml</script>
     <script>scripts\background_surface_initialize.gml</script>
+    <script>scripts\is_descendant.gml</script>
+    <scripts name="controller">
+      <script>scripts\controller_cannon_spawn.gml</script>
+      <script>scripts\controller_get_rotation.gml</script>
+      <script>scripts\controller_act.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_main</object>
@@ -42,6 +45,7 @@
     <object>objects\obj_trail</object>
     <objects name="controller">
       <object>objects\obj_controller</object>
+      <object>objects\obj_controller_keyboard</object>
       <object>objects\obj_controller_arrowkeys</object>
       <object>objects\obj_controller_wsad</object>
       <object>objects\obj_controller_ijkl</object>
@@ -58,15 +62,16 @@
         <object>objects\obj_missile</object>
       </objects>
     </objects>
-    <object>objects\obj_background</object>
     <object>objects\obj_physics_debug</object>
+    <objects name="background">
+      <object>objects\obj_trails</object>
+      <object>objects\obj_stars</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_main</room>
   </rooms>
-  <constants number="7">
-    <constant name="ACTION_LEFT">0</constant>
-    <constant name="ACTION_RIGHT">1</constant>
+  <constants number="5">
     <constant name="ACTION_CHARGE">2</constant>
     <constant name="ACTION_RELEASE">3</constant>
     <constant name="ACTION_DETONATE">4</constant>

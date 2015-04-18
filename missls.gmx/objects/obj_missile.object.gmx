@@ -166,6 +166,7 @@ if (joint_base != nojoint) {
 
 /*if (instance_exists(trail)) {
     var point;
+    point[2] = get_timer();
     point[1] = phy_position_y;
     point[0] = phy_position_x;
     with (trail) {

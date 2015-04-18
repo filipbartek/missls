@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>/// Initialize global variables
 
-global.gravity_planetary = 1;
-global.explosion_r = 64;
+global.gravity_planetary = 2;
+global.explosion_r = 32;
 global.trails = noone;
 
 draw_set_circle_precision(64);

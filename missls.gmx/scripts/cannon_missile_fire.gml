@@ -1,5 +1,7 @@
 ///cannon_missile_fire()
 
+assert(is_descendant(obj_cannon));
+
 var impulse_size = fire_power * (0.25 + (0.75 * cannon_get_charge_power()));
 var impulse_x = lengthdir_x(impulse_size, -phy_rotation);
 var impulse_y = lengthdir_y(impulse_size, -phy_rotation);
@@ -20,13 +22,18 @@ with (missile) {
     col = other.col;
     trail_active = true;
 
+    phy_speed_x = other.phy_speed_x;
+    phy_speed_y = other.phy_speed_y;
+    phy_angular_velocity = other.phy_angular_velocity;
+    
     phy_active = true;
-    phy_rotation = other.phy_rotation;
+    
     physics_apply_impulse(phy_position_x, phy_position_y, impulse_x, impulse_y);
-    physics_apply_angular_impulse(other.phy_angular_velocity / 1000);
     
     trail = instance_create(phy_position_x, phy_position_y, obj_trail);
     trail.col = other.col;
 }
+
+physics_apply_impulse(phy_position_x, phy_position_y, -impulse_x * 10, -impulse_y * 10);
 
 missile = noone;

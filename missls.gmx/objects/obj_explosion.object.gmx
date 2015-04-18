@@ -79,7 +79,7 @@ r = timer_diff * 64 / 1000000;
             <kind>1</kind>
             <string>/// Clear a part of trails
 
-if (instance_exists(global.trails)
+/*if (instance_exists(global.trails)
         and surface_exists(global.trails.surf)) {
     surface_set_target(global.trails.surf);
     draw_set_colour(c_black);
@@ -89,7 +89,7 @@ if (instance_exists(global.trails)
     draw_set_alpha(1);
     draw_set_blend_mode(bm_normal);
     surface_reset_target();
-}
+}*/
 </string>
           </argument>
         </arguments>
