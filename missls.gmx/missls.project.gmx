@@ -32,6 +32,7 @@
       <script>scripts\cannon_rotate_right.gml</script>
       <script>scripts\cannon_rotate_left.gml</script>
       <script>scripts\cannon_spawn.gml</script>
+      <script>scripts\cannon_get_charge_power.gml</script>
     </scripts>
     <script>scripts\missile_detonate.gml</script>
     <script>scripts\controller_act.gml</script>
@@ -45,6 +46,7 @@
       <object>objects\obj_controller</object>
       <object>objects\obj_controller_arrowkeys</object>
       <object>objects\obj_controller_wsad</object>
+      <object>objects\obj_controller_ijkl</object>
     </objects>
     <objects name="physical">
       <objects name="static">
@@ -62,17 +64,12 @@
   <rooms name="rooms">
     <room>rooms\room_main</room>
   </rooms>
-  <constants number="10">
+  <constants number="5">
     <constant name="ACTION_LEFT">0</constant>
     <constant name="ACTION_RIGHT">1</constant>
     <constant name="ACTION_CHARGE">2</constant>
     <constant name="ACTION_RELEASE">3</constant>
     <constant name="ACTION_DETONATE">4</constant>
-    <constant name="EV_LEFT">0</constant>
-    <constant name="EV_RIGHT">1</constant>
-    <constant name="EV_CHARGE">2</constant>
-    <constant name="EV_RELEASE">3</constant>
-    <constant name="EV_DETONATE">4</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
