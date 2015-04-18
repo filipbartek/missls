@@ -42,6 +42,12 @@
             <string>/// Initialize
 
 trail = noone;
+
+cannon = noone;
+base = noone;
+
+joint_cannon = nojoint;
+joint_base = nojoint;
 </string>
           </argument>
         </arguments>
@@ -88,6 +94,53 @@ if (instance_exists(trail)) {
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Remove joins which are no longer needed
+
+if (joint_cannon != nojoint) {
+    if (!instance_exists(cannon)) {
+        joint_cannon = nojoint;
+    } else {
+        var dist = point_distance(phy_position_x, phy_position_y,
+            cannon.phy_position_x, cannon.phy_position_y);
+        if (dist &gt; 16) {
+            physics_joint_delete(joint_cannon);
+            joint_cannon = nojoint;
+        }
+    }
+}
+
+if (joint_base != nojoint) {
+    if (!instance_exists(base)) {
+        joint_base = nojoint;
+    } else {
+        var dist = point_distance(phy_position_x, phy_position_y,
+            base.phy_position_x, base.phy_position_y);
+        if (dist &gt; 16) {
+            physics_joint_delete(joint_base);
+            joint_base = nojoint;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
       </action>
       <action>
         <libid>1</libid>

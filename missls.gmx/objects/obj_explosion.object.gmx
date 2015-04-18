@@ -52,38 +52,15 @@ r = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Disappear if too old
-
-var timer_diff = get_timer() - timer_start;
-
-if (timer_diff &gt; 1000000) {
-    instance_destroy();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>/// Update radius
 
 var timer_diff = get_timer() - timer_start;
 
 r = timer_diff * 64 / 1000000;
+
+if (r &gt; global.explosion_r) {
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

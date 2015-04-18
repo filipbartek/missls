@@ -49,6 +49,8 @@ col = c_white;
 missile = noone;
 charge_start = 0;
 missiles = ds_queue_create();
+
+base = noone;
 </string>
           </argument>
         </arguments>
@@ -112,9 +114,12 @@ ds_queue_destroy(missiles);
             <kind>1</kind>
             <string>/// Adjust missile
 
+var charge_power = cannon_get_charge_power();
+
 with (missile) {
-    phy_position_x = other.phy_position_x + lengthdir_x(16, -other.phy_rotation);
-    phy_position_y = other.phy_position_y + lengthdir_y(16, -other.phy_rotation);
+    var charge_depth = (0.5 - charge_power) * 24;
+    phy_position_x = other.phy_position_x + lengthdir_x(charge_depth, -other.phy_rotation);
+    phy_position_y = other.phy_position_y + lengthdir_y(charge_depth, -other.phy_rotation);
     phy_rotation = other.phy_rotation;
 }
 </string>
@@ -172,10 +177,42 @@ with (missile) {
             <string>/// Draw charge progress
 
 if (instance_exists(missile)) {
-    //var charge = (get_timer() - charge_start) / 1000000;
-
     draw_set_colour(c_gray);
     draw_text(phy_position_x, phy_position_y, cannon_get_charge_power());
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw active missile
+
+while (!ds_queue_empty(missiles)) {
+    var missile_det = ds_queue_head(missiles);
+    if (instance_exists(missile_det)) {
+        draw_set_colour(col);
+        with (missile_det) {
+            draw_circle(phy_position_x, phy_position_y, global.explosion_r, true);
+        }
+        break;
+    } else {
+        ds_queue_dequeue(missiles);
+    }
 }
 </string>
           </argument>

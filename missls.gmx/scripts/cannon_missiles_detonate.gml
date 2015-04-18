@@ -1,7 +1,6 @@
 ///cannon_missiles_detonate()
 
-while (true) {
-    if (ds_queue_empty(missiles)) break;
+while (!ds_queue_empty(missiles)) {
     var missile = ds_queue_dequeue(missiles);
     if (instance_exists(missile)) {
         with (missile) {

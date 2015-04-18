@@ -95,7 +95,7 @@ draw_primitive_end();
 
 if (head and num &gt; 0) {
     draw_set_colour(c_white);
-    draw_point(point[0], point[1]);
+    //draw_point(point[0], point[1]);
 }
 </string>
           </argument>

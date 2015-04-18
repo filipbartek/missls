@@ -27,11 +27,10 @@
             <kind>1</kind>
             <string>/// Initialize
 
-r = 512 / 4;
+r = min(room_width, room_height) / 4;
+density = 10000;
 
 var r_meters = r * pixeltometrescale;
-var density = 10000;
-
 mass = density * (r_meters)^2 * pi;
 
 global.planet = id;

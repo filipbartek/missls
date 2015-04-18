@@ -15,7 +15,7 @@ cannon = instance_create(pos_x, pos_y, obj_cannon);
 cannon.phy_rotation = -angle;
 cannon.col = col;
 cannon.image_blend = col;
-//cannon.base = base;
+cannon.base = base;
 
 physics_joint_revolute_create(base, cannon, pos_x, pos_y, -120, 120, true,
     0, 0, false, false);

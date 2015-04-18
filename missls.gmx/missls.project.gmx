@@ -61,13 +61,14 @@
   <rooms name="rooms">
     <room>rooms\room_main</room>
   </rooms>
-  <constants number="6">
+  <constants number="7">
     <constant name="ACTION_LEFT">0</constant>
     <constant name="ACTION_RIGHT">1</constant>
     <constant name="ACTION_CHARGE">2</constant>
     <constant name="ACTION_RELEASE">3</constant>
     <constant name="ACTION_DETONATE">4</constant>
     <constant name="pixeltometrescale">0.125</constant>
+    <constant name="nojoint">0</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
