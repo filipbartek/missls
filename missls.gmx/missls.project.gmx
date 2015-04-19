@@ -15,7 +15,6 @@
       <sound>sound\snd_tone_7</sound>
     </sounds>
     <sound>sound\song_2</sound>
-    <sound>sound\song_long</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_cannon</sprite>
