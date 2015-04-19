@@ -52,6 +52,9 @@ joint_base = nojoint;
 
 col = c_white;
 col_cannon = c_white;
+
+prev_point_x = global.planet.phy_position_x;
+prev_point_y = global.planet.phy_position_y;
 </string>
           </argument>
         </arguments>
@@ -169,12 +172,15 @@ if (joint_base != nojoint) {
             <string>/// Remember position in trail
 
 if (TRAILS == TRAILS_OBJECTS and instance_exists(trail)) {
-    var point;
-    point[2] = get_timer();
-    point[1] = phy_position_y;
-    point[0] = phy_position_x;
-    with (trail) {
-        ds_list_add(points, point);
+    var dist = point_distance(prev_point_x, prev_point_y, phy_position_x, phy_position_y);
+    if (dist &gt; 1) { // constant
+        var point;
+        point[2] = get_timer();
+        point[1] = phy_position_y;
+        point[0] = phy_position_x;
+        with (trail) {
+            ds_list_add(points, point);
+        }
     }
 }
 </string>
@@ -207,8 +213,25 @@ if (TRAILS == TRAILS_SURFACE
         and surface_exists(global.trails.surf)) {
     surface_set_target(global.trails.surf);
     draw_set_colour(col_cannon);
+    
+    var planet = global.planet;
+    var pos_x = planet.phy_position_x - global.visible_space_r;
+    var pos_y = planet.phy_position_y - global.visible_space_r;
+    var scale_x = global.visible_space_r * 2;
+    var scale_y = global.visible_space_r * 2;
+    
+    var trails = global.trails;
+    var width = trails.width;
+    var height = trails.height;
+    
+    d3d_transform_set_identity();
+    d3d_transform_add_translation(-planet.phy_position_x, -planet.phy_position_y, 0);
+    d3d_transform_add_scaling(width / (2 * global.visible_space_r), height / (2 * global.visible_space_r), 1);
+    d3d_transform_add_translation(width / 2, height / 2, 0);
+    
     draw_line(phy_position_xprevious, phy_position_yprevious,
         phy_position_x, phy_position_y);
+    d3d_transform_set_identity();
     surface_reset_target();
 }
 </string>

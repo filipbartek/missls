@@ -64,6 +64,33 @@ ds_list_destroy(points);
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Disappear?
+
+if (!instance_exists(missile) and ds_list_empty(points)) {
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -87,19 +114,33 @@ var point;
 
 var num = ds_list_size(points);
 
+var cutoff = 60 * 1000000;
+var a = 1 / cutoff;
+var timer_now = get_timer();
+
 draw_set_colour(col);
 draw_primitive_begin(pr_linestrip);
-for (var i = 0; i &lt; ds_list_size(points); i = i) {
+var i = 0
+while (i &lt; ds_list_size(points)) {
     point = ds_list_find_value(points, i);
-    var point_age = (get_timer() - point[2]) / 1000000;
-    assert(point_age &gt;= 0);
-    if (point_age &gt; 16) {
+    var timer_diff = timer_now - point[2];
+    if (timer_diff &gt;= cutoff) {
         ds_list_delete(points, i);
     } else {
-        draw_set_alpha(power(0.75, point_age));
+        var alpha = 1 - a * timer_diff; // linear
+        draw_set_alpha(alpha);
         draw_vertex(point[0], point[1]);
         i++;
     }
+    //var point_age = (get_timer() - point[2]) / 1000000;
+    //assert(point_age &gt;= 0);
+    //if (false and point_age &gt; global.trail_lifespan) { // debug
+    //    ds_list_delete(points, i);
+    //} else {
+        //draw_set_alpha(power(1 - 1/16, point_age));
+//        draw_vertex(point[0], point[1]);
+    //    i++;
+    //}
 }
 if (instance_exists(missile)) {
     draw_set_alpha(1);

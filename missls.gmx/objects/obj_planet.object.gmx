@@ -34,6 +34,8 @@ var r_meters = r * pixeltometrescale;
 mass = density * (r_meters)^2 * pi;
 
 global.planet = id;
+
+timer_spawned = get_timer();
 </string>
           </argument>
         </arguments>
@@ -58,10 +60,24 @@ global.planet = id;
             <kind>1</kind>
             <string>/// Draw the planet
 
+// Body
 draw_set_colour(c_black);
 draw_circle(phy_position_x, phy_position_y, r, false);
+
+// Outline
 draw_set_colour(c_white);
+//var age = (get_timer() - timer_spawned) / 1000000;
+//draw_set_alpha(power(1 - 1/16, global.missiles_fired));
+
+var trail_len = 0;
+with (obj_trail) {
+    trail_len += ds_list_size(points);
+}
+
+draw_set_alpha(power(1 - 1/16, trail_len / 256));
+
 draw_circle(phy_position_x, phy_position_y, r, true);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

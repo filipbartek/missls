@@ -2,6 +2,8 @@
 
 assert(is_descendant(obj_cannon));
 
+if (!instance_exists(missile)) return 0;
+
 var timer_diff = get_timer() - charge_start;
 assert(timer_diff >= 0);
 

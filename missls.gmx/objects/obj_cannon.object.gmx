@@ -247,7 +247,11 @@ while (!ds_queue_empty(missiles)) {
     if (instance_exists(missile_det)) {
         draw_set_colour(col);
         with (missile_det) {
-            draw_circle(phy_position_x, phy_position_y, global.explosion_r, true);
+            draw_set_alpha(1/4);
+            draw_set_blend_mode(bm_add);
+            draw_circle_colour(phy_position_x, phy_position_y, global.explosion_r, c_white, c_black, 0);
+            draw_set_blend_mode(bm_normal);
+            draw_set_alpha(1);
         }
         break;
     } else {
@@ -274,15 +278,25 @@ while (!ds_queue_empty(missiles)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw glow
+            <string>/// Draw charge meter
 
-// http://gmc.yoyogames.com/index.php?showtopic=567674
+var charge_power = cannon_get_charge_power();
 
-/*draw_set_alpha(0.5);
-draw_set_blend_mode(bm_add);
-draw_circle_colour(phy_position_x, phy_position_y, 32, c_white, c_black, 0);
-draw_set_blend_mode(bm_normal);
-draw_set_alpha(1);*/
+d3d_transform_set_identity();
+d3d_transform_add_scaling(8, 1, 1);
+d3d_transform_add_scaling(16, 16, 1);
+d3d_transform_add_translation(7, 0, 0);
+d3d_transform_add_scaling(model.scale, model.scale, 1);
+d3d_transform_add_rotation_z(-phy_rotation);
+d3d_transform_add_translation(phy_position_x, phy_position_y, 0);
+
+draw_set_colour(c_white);
+draw_set_alpha(1/4);
+draw_triangle(0, 0, 1, -1, 1, 1, false);
+draw_triangle(0, 0, charge_power, -charge_power, charge_power, charge_power, false);
+draw_set_alpha(1);
+
+d3d_transform_set_identity();
 </string>
           </argument>
         </arguments>

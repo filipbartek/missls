@@ -35,6 +35,8 @@ with (missile) {
         trail.col = other.col;
         trail.missile = id;
     }
+    
+    global.missiles_fired++;
 }
 
 //physics_apply_impulse(phy_position_x, phy_position_y, -impulse_x * cannon_get_charge_power(), -impulse_y * cannon_get_charge_power());

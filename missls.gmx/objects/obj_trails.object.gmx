@@ -30,8 +30,43 @@
 surf = nosurface;
 global.trails = id;
 
+width = 1024;
+height = 1024;
+
 if (TRAILS == TRAILS_SURFACE) {
-    surf = surface_create(room_width, room_height);
+    surf = surface_create(width, height);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw stars
+
+var num_stars = width * height / 1024;
+
+surface_exists(surf) {
+    surface_set_target(surf);
+    draw_set_colour(c_white);
+    repeat (num_stars) {
+        draw_point(irandom(width - 1), irandom(height - 1));
+    }
+    surface_reset_target();
 }
 </string>
           </argument>
@@ -83,7 +118,15 @@ surface_free(surf);
             <string>/// Draw surface
 
 if (surface_exists(surf)) {
-    draw_surface(surf, 0, 0);
+    //draw_surface(surf, 0, 0);
+    
+    var planet = global.planet;
+    var pos_x = planet.phy_position_x - global.visible_space_r;
+    var pos_y = planet.phy_position_y - global.visible_space_r;
+    var scale_x = global.visible_space_r * 2 / width;
+    var scale_y = global.visible_space_r * 2 / height;
+    
+    draw_surface_ext(surf, pos_x, pos_y, scale_x, scale_y, 0, c_white, 1);
 }
 </string>
           </argument>
