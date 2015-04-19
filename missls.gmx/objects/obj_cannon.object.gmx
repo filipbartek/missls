@@ -41,7 +41,7 @@
             <kind>1</kind>
             <string>/// Initialize
 
-rotation_speed = 200;
+rotation_speed = 64;
 fire_power = 30;
 
 col = c_white;
@@ -193,22 +193,6 @@ if (joint_base != nojoint) {
 </string>
           </argument>
         </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>203</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_kill_object</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="8" enumb="0">

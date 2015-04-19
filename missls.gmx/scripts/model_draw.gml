@@ -4,7 +4,7 @@ var pos_x = argument0;
 var pos_y = argument1;
 var rot = argument2;
 
-assert(is_descendant(obj_model));
+assert(is_descendant(obj_model) or is_descendant(obj_ufo));
 
 assert(ds_exists(vertices, ds_type_list));
 assert(ds_exists(edges, ds_type_list));

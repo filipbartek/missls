@@ -1,6 +1,6 @@
 ///model_fixture_set_properties(fixture)
 
-assert(is_descendant(obj_model));
+assert(is_descendant(obj_model) or is_descendant(obj_ufo));
 
 var fixture = argument0;
 

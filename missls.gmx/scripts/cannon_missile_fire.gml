@@ -2,7 +2,7 @@
 
 assert(is_descendant(obj_cannon));
 
-var impulse_size = fire_power * (0 + (0.75 * cannon_get_charge_power()));
+var impulse_size = fire_power * (0.25 + (0.75 * cannon_get_charge_power()));
 var impulse_x = lengthdir_x(impulse_size, -phy_rotation);
 var impulse_y = lengthdir_y(impulse_size, -phy_rotation);
 
@@ -37,6 +37,6 @@ with (missile) {
     }
 }
 
-physics_apply_impulse(phy_position_x, phy_position_y, -impulse_x * 2, -impulse_y * 2);
+//physics_apply_impulse(phy_position_x, phy_position_y, -impulse_x * cannon_get_charge_power(), -impulse_y * cannon_get_charge_power());
 
 missile = noone;

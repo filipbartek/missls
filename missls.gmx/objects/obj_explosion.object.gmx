@@ -30,6 +30,10 @@
 timer_start = get_timer();
 
 r = 0;
+
+push_r = 0;
+
+max_r = global.explosion_r;
 </string>
           </argument>
         </arguments>
@@ -87,6 +91,8 @@ if (global.tones != nods) {
 var timer_diff = get_timer() - timer_start;
 
 r = timer_diff * 64 / 1000000;
+
+push_r = r;
 </string>
           </argument>
         </arguments>
@@ -142,7 +148,7 @@ r = timer_diff * 64 / 1000000;
             <kind>1</kind>
             <string>/// Destroy explosion if too large
 
-if (r &gt; global.explosion_r) {
+if (r &gt; max_r) {
     instance_destroy();
 }
 </string>
@@ -227,27 +233,62 @@ with (obj_base) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Push cannons
+            <string>/// Push dynamic objects
 
-var max_power = 100000;
+var max_power = 4096;
 
-with (obj_cannon) {
+with (obj_dynamic) {
     var dist = point_distance(other.x, other.y, phy_position_x, phy_position_y);
-    if (dist &lt;= other.r) {
-        assert(other.r &gt; 0);
-        var dist_ratio = dist / other.r; // 0 in center, 1 at rim
-        if (dist_ratio == 0) {
+    if (dist &lt;= other.push_r) {
+        assert(other.push_r &gt; 0);
+        //var dist_ratio = dist / other.push_r; // 0 in center, 1 at rim
+        // Push power should depend on push_r rather than dist.
+        /*if (dist_ratio == 0) {
             push_power = max_power;
         } else {
             //var push_power = 1000 * ((1 / dist_ratio) - 1);
             assert (dist_ratio &lt;= 1);
             var push_power = 10000 * -log2(dist_ratio);
             if (push_power &gt; max_power) push_power = max_power;
-        }
+        }*/
+        //push_power = min(max_power, 1024 / other.push_r);
+        //push_power = max_power;
+        push_power = power(0.5, other.push_r/other.max_r) * max_power;
         var dir = point_direction(other.x, other.y, phy_position_x, phy_position_y);
         var force_x = lengthdir_x(push_power, dir);
         var force_y = lengthdir_y(push_power, dir);
         physics_apply_force(phy_position_x, phy_position_y, force_x, force_y);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Expand ufos
+with (obj_ufo) {
+    var dist = point_distance(other.x, other.y, phy_position_x, phy_position_y);
+    if (dist &lt;= other.r) {
+        // Expand
+        ufo_remove_fixtures();
+        //scale *= 2;
+        scale++;
+        ufo_create_fixtures();
     }
 }
 </string>
@@ -276,6 +317,30 @@ with (obj_cannon) {
 
 draw_set_colour(c_white);
 draw_circle(x, y, r, false);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw push circle
+
+draw_set_colour(c_gray);
+//draw_circle(x, y, push_r, true);
 </string>
           </argument>
         </arguments>

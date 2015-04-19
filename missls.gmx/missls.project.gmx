@@ -28,6 +28,7 @@
       <sprite>sprites\spr_stars</sprite>
     </sprites>
     <sprite>sprites\spr_base</sprite>
+    <sprite>sprites\spr_ufo</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -57,6 +58,11 @@
         <script>scripts\model_fixture_add_point.gml</script>
       </scripts>
     </scripts>
+    <scripts name="ufo">
+      <script>scripts\ufo_create_fixtures.gml</script>
+      <script>scripts\ufo_remove_fixtures.gml</script>
+    </scripts>
+    <script>scripts\spawn_ufo.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_main</object>
@@ -79,6 +85,7 @@
         <object>objects\obj_dynamic</object>
         <object>objects\obj_cannon</object>
         <object>objects\obj_missile</object>
+        <object>objects\obj_ufo</object>
       </objects>
     </objects>
     <object>objects\obj_physics_debug</object>
@@ -90,6 +97,7 @@
       <object>objects\obj_model</object>
       <object>objects\obj_model_cannon</object>
       <object>objects\obj_model_missile</object>
+      <object>objects\obj_model_ufo</object>
     </objects>
     <object>objects\obj_sounds</object>
   </objects>

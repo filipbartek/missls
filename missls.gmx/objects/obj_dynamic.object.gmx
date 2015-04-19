@@ -70,6 +70,37 @@ physics_apply_force(phy_position_x, phy_position_y, force_x, force_y);
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Disappear if too far
+
+var dist = point_distance(phy_position_x, phy_position_y, planet.phy_position_x, planet.phy_position_y);
+
+if (dist &gt; global.space_r and !is_descendant(obj_missile)) {
+    instance_destroy();
+}
+
+if (dist &gt; global.space_r * 2) {
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="obj_dynamic">
       <action>

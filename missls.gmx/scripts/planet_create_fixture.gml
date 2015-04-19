@@ -9,10 +9,10 @@ physics_fixture_set_circle_shape(fix, r);
 
 // Properties
 physics_fixture_set_density(fix, 0);
-physics_fixture_set_friction(fix, 0.9);
+physics_fixture_set_friction(fix, 7/8);
 physics_fixture_set_linear_damping(fix, 0);
 physics_fixture_set_angular_damping(fix, 0);
-physics_fixture_set_restitution(fix, 0.1);
+physics_fixture_set_restitution(fix, 1/8);
 physics_fixture_set_kinematic(fix);
 physics_fixture_set_awake(fix, true);
 
