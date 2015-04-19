@@ -28,7 +28,7 @@
             <string>/// Initialize global variables
 
 global.gravity_planetary = 2;
-global.explosion_r = 32;
+global.explosion_r = 64;
 global.trails = noone;
 
 draw_set_circle_precision(64);
@@ -156,13 +156,9 @@ global.model_missile = instance_create(0, 0, obj_model_missile);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Debug: Spawn a missile
+            <string>/// Play intro song
 
-/*instance_create(0, 0, obj_missile);
-view_xview[VIEW_MAIN] = -32;
-view_yview[VIEW_MAIN] = -32;
-view_wview[VIEW_MAIN] = 64;
-view_hview[VIEW_MAIN] = 64;*/
+audio_play_sound(song_2, 1, false);
 </string>
           </argument>
         </arguments>
