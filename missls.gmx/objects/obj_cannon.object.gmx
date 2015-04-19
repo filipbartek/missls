@@ -154,7 +154,7 @@ ds_queue_destroy(missiles);
 var charge_power = cannon_get_charge_power();
 
 with (missile) {
-    var charge_depth = (0.5 - charge_power) * 24;
+    var charge_depth = (1 - charge_power) * global.model_cannon.scale * 7;
     phy_position_x = other.phy_position_x + lengthdir_x(charge_depth, -other.phy_rotation);
     phy_position_y = other.phy_position_y + lengthdir_y(charge_depth, -other.phy_rotation);
     phy_rotation = other.phy_rotation;

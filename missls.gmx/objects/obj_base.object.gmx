@@ -28,6 +28,39 @@
             <string>/// Initialize
 
 cannon = noone;
+
+col = c_white;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Initialize model with fixtures
+
+assert(instance_exists(global.model_base));
+model = global.model_base;
+
+if (model.fixtures != nods) {
+    for (var i = 0; i &lt; ds_list_size(model.fixtures); i++) {
+        var fix = ds_list_find_value(model.fixtures, i);
+        physics_fixture_bind_ext(fix[0], self, fix[1], fix[2]);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -61,6 +94,36 @@ if (instance_exists(cannon)) {
         </arguments>
       </action>
     </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw model
+
+assert(instance_exists(model));
+
+with (model) {
+    draw_set_colour(other.col);
+    model_draw(other.phy_position_x, other.phy_position_y, other.phy_rotation);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
@@ -74,8 +137,12 @@ if (instance_exists(cannon)) {
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>16,16</point>
-    <point>32,32</point>
+    <point>0,0</point>
+    <point>16,0</point>
+    <point>28,4</point>
+    <point>32,16</point>
+    <point>28,28</point>
+    <point>16,32</point>
     <point>0,32</point>
   </PhysicsShapePoints>
 </object>

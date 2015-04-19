@@ -84,7 +84,7 @@ ss_prefix = "ss-";
 var planet = instance_create(room_width / 2, room_height / 2, obj_planet);
 var smalldim = min(room_width, room_height);
 var r_min = smalldim / 8;
-var r_max = smalldim / 4;
+var r_max = smalldim / 2;
 planet.r = random_range(r_min, r_max);
 
 with (planet) {
@@ -140,6 +140,7 @@ global.planet = planet;
 global.model_cannon = instance_create(0, 0, obj_model_cannon);
 global.model_missile = instance_create(0, 0, obj_model_missile);
 global.model_ufo = instance_create(0, 0, obj_model_ufo);
+global.model_base = instance_create(0, 0, obj_model_base);
 </string>
           </argument>
         </arguments>
@@ -309,6 +310,9 @@ if (step_count % screenshot_delay = 0) {
 
 var planet = global.planet;
 
+var margin = room_width / 2;
+//margin = 0;
+
 var pos_x_min = planet.phy_position_x - planet.r;
 var pos_x_max = planet.phy_position_x + planet.r;
 var pos_y_min = planet.phy_position_y - planet.r;
@@ -322,12 +326,12 @@ with (obj_cannon) {
     pos_y_max = max(pos_y_max, phy_position_y);
 }
 
-view_xview[VIEW_MAIN] = pos_x_min - planet.r;
-view_yview[VIEW_MAIN] = pos_y_min - planet.r;
+view_xview[VIEW_MAIN] = pos_x_min - margin;
+view_yview[VIEW_MAIN] = pos_y_min - margin;
 
 var aspect_ratio = view_wport[VIEW_MAIN] / view_hport[VIEW_MAIN];
-var wview_desired = pos_x_max + planet.r - view_xview[VIEW_MAIN];
-var hview_desired = pos_y_max + planet.r - view_yview[VIEW_MAIN];
+var wview_desired = pos_x_max + margin - view_xview[VIEW_MAIN];
+var hview_desired = pos_y_max + margin - view_yview[VIEW_MAIN];
 
 if (wview_desired &gt; hview_desired * aspect_ratio) {
     hview_desired = wview_desired / aspect_ratio;

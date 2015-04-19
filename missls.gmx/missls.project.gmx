@@ -17,8 +17,6 @@
     <sound>sound\song_2</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_cannon</sprite>
-    <sprite>sprites\spr_missile</sprite>
     <sprites name="icon">
       <sprite>sprites\spr_planet</sprite>
       <sprite>sprites\spr_gravitating</sprite>
@@ -26,9 +24,11 @@
       <sprite>sprites\spr_trail</sprite>
       <sprite>sprites\spr_controller_keys</sprite>
       <sprite>sprites\spr_stars</sprite>
+      <sprite>sprites\spr_ufo</sprite>
+      <sprite>sprites\spr_missile</sprite>
+      <sprite>sprites\spr_cannon</sprite>
     </sprites>
     <sprite>sprites\spr_base</sprite>
-    <sprite>sprites\spr_ufo</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -97,6 +97,7 @@
       <object>objects\obj_model</object>
       <object>objects\obj_model_cannon</object>
       <object>objects\obj_model_missile</object>
+      <object>objects\obj_model_base</object>
       <object>objects\obj_model_ufo</object>
     </objects>
     <object>objects\obj_sounds</object>
