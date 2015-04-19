@@ -32,6 +32,8 @@ points = ds_list_create();
 col = c_white;
 
 head = false;
+
+missile = noone;
 </string>
           </argument>
         </arguments>
@@ -87,19 +89,26 @@ var num = ds_list_size(points);
 
 draw_set_colour(col);
 draw_primitive_begin(pr_linestrip);
-for (var i = 0; i &lt; num; i++) {
+for (var i = 0; i &lt; ds_list_size(points); i = i) {
     point = ds_list_find_value(points, i);
     var point_age = (get_timer() - point[2]) / 1000000;
     assert(point_age &gt;= 0);
-    draw_set_alpha(power(0.5, point_age));
-    draw_vertex(point[0], point[1]);
+    if (point_age &gt; 16) {
+        ds_list_delete(points, i);
+    } else {
+        draw_set_alpha(power(0.75, point_age));
+        draw_vertex(point[0], point[1]);
+        i++;
+    }
+}
+if (instance_exists(missile)) {
+    draw_set_alpha(1);
+    draw_vertex(missile.phy_position_x, missile.phy_position_y);
 }
 draw_primitive_end();
 
-if (head and num &gt; 0) {
-    draw_set_colour(c_white);
-    //draw_point(point[0], point[1]);
-}
+// Clean up
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

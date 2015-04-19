@@ -43,6 +43,7 @@
       <scripts name="fixture">
         <script>scripts\model_fixture_set_properties.gml</script>
         <script>scripts\model_fixture_add_vertex.gml</script>
+        <script>scripts\model_fixture_add_point.gml</script>
       </scripts>
     </scripts>
   </scripts>
@@ -77,6 +78,7 @@
     <objects name="model">
       <object>objects\obj_model</object>
       <object>objects\obj_model_cannon</object>
+      <object>objects\obj_model_missile</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -91,7 +93,7 @@
     <constant name="VIEW_MAIN">0</constant>
     <constant name="TRAILS_OBJECTS">0</constant>
     <constant name="TRAILS_SURFACE">1</constant>
-    <constant name="TRAILS">TRAILS_SURFACE</constant>
+    <constant name="TRAILS">TRAILS_OBJECTS</constant>
     <constant name="nosurface">-1</constant>
     <constant name="nods">-1</constant>
   </constants>

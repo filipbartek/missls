@@ -2,7 +2,7 @@
 
 assert(is_descendant(obj_cannon));
 
-var impulse_size = fire_power * (0.25 + (0.75 * cannon_get_charge_power()));
+var impulse_size = fire_power * (0 + (0.75 * cannon_get_charge_power()));
 var impulse_x = lengthdir_x(impulse_size, -phy_rotation);
 var impulse_y = lengthdir_y(impulse_size, -phy_rotation);
 
@@ -33,6 +33,7 @@ with (missile) {
     if (TRAILS == TRAILS_OBJECTS) {
         trail = instance_create(phy_position_x, phy_position_y, obj_trail);
         trail.col = other.col;
+        trail.missile = id;
     }
 }
 
