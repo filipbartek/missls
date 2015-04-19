@@ -30,8 +30,10 @@ with (missile) {
     
     physics_apply_impulse(phy_position_x, phy_position_y, impulse_x, impulse_y);
     
-    trail = instance_create(phy_position_x, phy_position_y, obj_trail);
-    trail.col = other.col;
+    if (TRAILS == TRAILS_OBJECTS) {
+        trail = instance_create(phy_position_x, phy_position_y, obj_trail);
+        trail.col = other.col;
+    }
 }
 
 physics_apply_impulse(phy_position_x, phy_position_y, -impulse_x * 2, -impulse_y * 2);

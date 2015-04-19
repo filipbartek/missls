@@ -61,6 +61,37 @@ controller = noone;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Initialize model with fixtures
+
+assert(instance_exists(global.model_cannon));
+model = global.model_cannon;
+
+if (model.fixtures != nods) {
+    for (var i = 0; i &lt; ds_list_size(model.fixtures); i++) {
+        var fix = ds_list_find_value(model.fixtures, i);
+        physics_fixture_bind_ext(fix[0], self, fix[1], fix[2]);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -183,17 +214,31 @@ if (joint_base != nojoint) {
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
-        <id>500</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
+        <useapplyto>-1</useapplyto>
         <exetype>2</exetype>
         <functionname></functionname>
-        <codestring>draw_self();</codestring>
+        <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw model
+
+assert(instance_exists(model));
+
+with (model) {
+    draw_set_colour(other.col);
+    model_draw(other.phy_position_x, other.phy_position_y, other.phy_rotation);
+}
+</string>
+          </argument>
+        </arguments>
       </action>
       <action>
         <libid>1</libid>
@@ -260,7 +305,7 @@ draw_set_alpha(1);*/
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>1</PhysicsObjectDensity>
@@ -271,10 +316,5 @@ draw_set_alpha(1);*/
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>0,0</point>
-    <point>32,0</point>
-    <point>32,16</point>
-    <point>0,16</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>

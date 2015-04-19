@@ -42,6 +42,7 @@
             <string>/// Initialize
 
 trail = noone;
+trail_active = false;
 
 cannon = noone;
 base = noone;
@@ -50,8 +51,6 @@ joint_cannon = nojoint;
 joint_base = nojoint;
 
 col = c_white;
-
-trail_active = false;
 </string>
           </argument>
         </arguments>
@@ -164,7 +163,7 @@ if (joint_base != nojoint) {
             <kind>1</kind>
             <string>/// Remember position in trail
 
-/*if (instance_exists(trail)) {
+if (TRAILS == TRAILS_OBJECTS and instance_exists(trail)) {
     var point;
     point[2] = get_timer();
     point[1] = phy_position_y;
@@ -172,7 +171,7 @@ if (joint_base != nojoint) {
     with (trail) {
         ds_list_add(points, point);
     }
-}*/
+}
 </string>
           </argument>
         </arguments>
@@ -195,7 +194,8 @@ if (joint_base != nojoint) {
             <kind>1</kind>
             <string>/// Draw trail to trails surface
 
-if (trail_active
+if (TRAILS == TRAILS_SURFACE
+        and trail_active
         and instance_exists(global.trails)
         and surface_exists(global.trails.surf)) {
     surface_set_target(global.trails.surf);

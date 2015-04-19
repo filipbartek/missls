@@ -142,7 +142,6 @@ while (true) {
     
     if (instance_exists(missile)) {
         var dist = point_distance(x, y, missile.phy_position_x, missile.phy_position_y);
-        //var dist = distance_to_object(missile);
         if (dist &lt;= r) {
             with (missile) {
                 missile_detonate();

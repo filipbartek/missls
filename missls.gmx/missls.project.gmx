@@ -31,12 +31,19 @@
     <script>scripts\missile_detonate.gml</script>
     <script>scripts\assert.gml</script>
     <script>scripts\planet_create_fixture.gml</script>
-    <script>scripts\background_surface_initialize.gml</script>
     <script>scripts\is_descendant.gml</script>
     <scripts name="controller">
       <script>scripts\controller_cannon_spawn.gml</script>
       <script>scripts\controller_get_rotation.gml</script>
       <script>scripts\controller_act.gml</script>
+    </scripts>
+    <script>scripts\array.gml</script>
+    <scripts name="model">
+      <script>scripts\model_draw.gml</script>
+      <scripts name="fixture">
+        <script>scripts\model_fixture_set_properties.gml</script>
+        <script>scripts\model_fixture_add_vertex.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -67,16 +74,26 @@
       <object>objects\obj_trails</object>
       <object>objects\obj_stars</object>
     </objects>
+    <objects name="model">
+      <object>objects\obj_model</object>
+      <object>objects\obj_model_cannon</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_main</room>
   </rooms>
-  <constants number="5">
+  <constants number="11">
     <constant name="ACTION_CHARGE">2</constant>
     <constant name="ACTION_RELEASE">3</constant>
     <constant name="ACTION_DETONATE">4</constant>
     <constant name="pixeltometrescale">0.125</constant>
     <constant name="nojoint">0</constant>
+    <constant name="VIEW_MAIN">0</constant>
+    <constant name="TRAILS_OBJECTS">0</constant>
+    <constant name="TRAILS_SURFACE">1</constant>
+    <constant name="TRAILS">TRAILS_SURFACE</constant>
+    <constant name="nosurface">-1</constant>
+    <constant name="nods">-1</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

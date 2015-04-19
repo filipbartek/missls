@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -41,6 +41,8 @@ flag = phy_debug_render_collision_pairs
     | phy_debug_render_core_shapes
     | phy_debug_render_joints
     | phy_debug_render_shapes;
+
+//flag = phy_debug_render_coms;
 </string>
           </argument>
         </arguments>
