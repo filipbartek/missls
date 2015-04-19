@@ -89,6 +89,8 @@ planet.r = random_range(r_min, r_max);
 with (planet) {
     planet_create_fixture();
 }
+
+global.planet = planet;
 </string>
           </argument>
         </arguments>
@@ -261,10 +263,37 @@ if (step_count % screenshot_delay = 0) {
             <kind>1</kind>
             <string>/// Adjust view
 
-/*view_xview[VIEW_MAIN]--;
-view_yview[VIEW_MAIN]--;
-view_wview[VIEW_MAIN]+=2;
-view_hview[VIEW_MAIN]+=2;*/
+// Find extreme points that should be clearly visible
+
+var planet = global.planet;
+
+var pos_x_min = planet.phy_position_x - planet.r;
+var pos_x_max = planet.phy_position_x + planet.r;
+var pos_y_min = planet.phy_position_y - planet.r;
+var pos_y_max = planet.phy_position_y + planet.r;
+
+// Find extremely positioned cannons
+with (obj_cannon) {
+    pos_x_min = min(pos_x_min, phy_position_x);
+    pos_x_max = max(pos_x_max, phy_position_x);
+    pos_y_min = min(pos_y_min, phy_position_y);
+    pos_y_max = max(pos_y_max, phy_position_y);
+}
+
+view_xview[VIEW_MAIN] = pos_x_min - planet.r;
+view_yview[VIEW_MAIN] = pos_y_min - planet.r;
+
+var aspect_ratio = view_wport[VIEW_MAIN] / view_hport[VIEW_MAIN];
+var wview_desired = pos_x_max + planet.r - view_xview[VIEW_MAIN];
+var hview_desired = pos_y_max + planet.r - view_yview[VIEW_MAIN];
+
+if (wview_desired &gt; hview_desired * aspect_ratio) {
+    hview_desired = wview_desired / aspect_ratio;
+} else {
+    wview_desired = hview_desired * aspect_ratio;
+}
+view_wview[VIEW_MAIN] = wview_desired;
+view_hview[VIEW_MAIN] = hview_desired;
 </string>
           </argument>
         </arguments>
