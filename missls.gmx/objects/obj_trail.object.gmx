@@ -114,7 +114,7 @@ var point;
 
 var num = ds_list_size(points);
 
-var cutoff = 60 * 1000000;
+var cutoff = 30 * 1000000;
 var a = 1 / cutoff;
 var timer_now = get_timer();
 

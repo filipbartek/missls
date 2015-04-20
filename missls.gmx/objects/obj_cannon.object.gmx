@@ -42,7 +42,7 @@
             <string>/// Initialize
 
 rotation_speed = 64;
-fire_power = 30;
+fire_power = 16;
 
 col = c_white;
 

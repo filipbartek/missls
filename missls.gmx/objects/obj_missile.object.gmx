@@ -173,7 +173,7 @@ if (joint_base != nojoint) {
 
 if (TRAILS == TRAILS_OBJECTS and instance_exists(trail)) {
     var dist = point_distance(prev_point_x, prev_point_y, phy_position_x, phy_position_y);
-    if (dist &gt; 1) { // constant
+    if (dist &gt; 6) { // constant
         var point;
         point[2] = get_timer();
         point[1] = phy_position_y;
