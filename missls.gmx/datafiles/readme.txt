@@ -21,7 +21,7 @@ Up: Fire missile
 Down: Detonate missile
 
 
-Author: Filip Bártek
+Author: Filip BÃ¡rtek
 GitHub page: https://github.com/filipbartek/missls
 
 Made in GameMaker: Studio (Standard Edition, v1.4.1567)
