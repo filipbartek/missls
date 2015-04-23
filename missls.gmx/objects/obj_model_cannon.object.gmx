@@ -41,10 +41,10 @@
             <kind>1</kind>
             <string>/// Initialize properties
 
-fix_density = 2;
+fix_density = 0.5;
 fix_friction = 1/2;
-fix_damping_linear = 0;
-fix_damping_angular = 8;
+fix_damping_linear = 0.2;
+fix_damping_angular = 4;
 fix_restitution = 1/8;
 </string>
           </argument>
@@ -159,14 +159,15 @@ fixtures = ds_list_create();
 
 // Body
 var fix_body = physics_fixture_create();
-physics_fixture_set_polygon_shape(fix_body);
+physics_fixture_set_circle_shape(fix_body, 6)
+//physics_fixture_set_polygon_shape(fix_body);
 
-model_fixture_add_vertex(fix_body, 0);
+/*model_fixture_add_vertex(fix_body, 0);
 model_fixture_add_vertex(fix_body, 1);
 model_fixture_add_vertex(fix_body, 2);
 model_fixture_add_vertex(fix_body, 5);
 model_fixture_add_vertex(fix_body, 6);
-model_fixture_add_vertex(fix_body, 7);
+model_fixture_add_vertex(fix_body, 7);*/
 
 model_fixture_set_properties(fix_body);
 

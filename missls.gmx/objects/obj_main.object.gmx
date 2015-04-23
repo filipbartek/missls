@@ -31,10 +31,10 @@ randomize();
 
 margin = room_width / 2;
 
-global.gravity_planetary = 2;
-global.explosion_r = 64;
+global.gravity_planetary = 6;
+global.explosion_r = 96;
 global.trails = noone;
-global.space_r = room_width;
+global.space_r = room_width*2;
 global.visible_space_r = global.space_r + margin;
 global.missiles_fired = 0;
 global.trail_lifespan = 60;

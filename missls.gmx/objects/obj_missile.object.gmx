@@ -86,6 +86,8 @@ if (model.fixtures != nods) {
         physics_fixture_bind_ext(fix[0], self, fix[1], fix[2]);
     }
 }
+
+phy_bullet = true;
 </string>
           </argument>
         </arguments>

@@ -41,8 +41,8 @@
             <kind>1</kind>
             <string>/// Initialize
 
-rotation_speed = 64;
-fire_power = 16;
+rotation_speed = 12;
+fire_power = 48;
 
 col = c_white;
 

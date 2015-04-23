@@ -8,6 +8,6 @@ while (!ds_queue_empty(missiles)) {
         with (missile) {
             missile_detonate();
         }
-        break;
+        //break;
     }
 }

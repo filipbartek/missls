@@ -90,7 +90,7 @@ if (global.tones != nods) {
 
 var timer_diff = get_timer() - timer_start;
 
-r = timer_diff * 64 / 1000000;
+r = timer_diff * 128 / 1000000;
 
 push_r = r;
 </string>
@@ -235,7 +235,7 @@ with (obj_base) {
             <kind>1</kind>
             <string>/// Push dynamic objects
 
-var max_power = 4096;
+var max_power = 1024;
 
 with (obj_dynamic) {
     var dist = point_distance(other.x, other.y, phy_position_x, phy_position_y);
