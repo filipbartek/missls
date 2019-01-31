@@ -66,6 +66,7 @@ step_count = 0;
 
 screenshot_delay = 15;
 ss_prefix = "ss-";
+ss_enabled = false;
 </string>
           </argument>
         </arguments>
@@ -243,12 +244,12 @@ step_count++;
             <kind>1</kind>
             <string>/// Save a screenshot
 
-if (step_count % screenshot_delay = 0) {
+if (ss_enabled &amp;&amp; step_count % screenshot_delay = 0) {
     var numstr = string_format(step_count div screenshot_delay, 3, 0)
     var filename = ss_prefix + numstr + ".png";
     if (!file_exists(filename)) {
-        //screen_save(filename);
-        //show_debug_message("Screenshot saved to " + filename);
+        screen_save(filename);
+        show_debug_message("Screenshot saved to " + filename);
     }
 }
 </string>
