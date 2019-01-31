@@ -283,6 +283,15 @@ while (!ds_queue_empty(missiles)) {
 var charge_power = cannon_get_charge_power();
 
 d3d_transform_set_identity();
+
+/*
+Filip Bartek:
+The following translation compensates for an offset
+introduced in GameMaker Studio 1.4.9999.
+I don't know why the offset was introduced.
+*/
+d3d_transform_add_translation(-1, -1, 0);
+
 d3d_transform_add_scaling(8, 1, 1);
 d3d_transform_add_scaling(16, 16, 1);
 d3d_transform_add_translation(7, 0, 0);
